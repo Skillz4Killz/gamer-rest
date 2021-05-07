@@ -7,6 +7,7 @@ setApplicationId(
 );
 
 serve({
+  // @ts-ignore we don't want to return a response here,the rest will send the response
   "/": main,
 });
 
@@ -32,6 +33,4 @@ async function main(request: Request) {
     },
     reject: (error) => json(error as Record<string, unknown>),
   }, payload).catch(console.error);
-
-  return json({ error: "Bad request" }, { status: 400 });
 }
